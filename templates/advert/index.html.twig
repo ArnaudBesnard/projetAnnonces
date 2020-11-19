@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les annonces
+{% endblock %}
+
+{% block body %}
+	<h1>Les annonces</h1>
+
+	{% for advert in adverts %}
+		<h2>{{ advert.title }}</h2>
+		{{ advert.category }}<br />
+		{{ advert.content }}<br/>
+		<span class="price">{{ advert.price }}
+			$</span>
+		<h5>Contact</h5>
+		Courriel :
+		{{ advert.email }}<br/>
+		Annonce publiée le : {{ advert.postedAt ? advert.postedAt|date('d-m-Y à H:i') : '' }}<br/>
+		Cellulaire :
+		{{ advert.phone }}<br/>
+		Annonce publiée par :
+		{{ advert.author }}<br/>
+		Ville :
+		{{ advert.city }}<br/>
+		Code postal :
+		{{ advert.postalCode }}<br/>
+		<td>
+			<a href="{{ path('advert_show', {'id': advert.id}) }}">Afficher</a>
+			<a href="{{ path('advert_edit', {'id': advert.id}) }}">Editer</a>
+		</td>
+		<hr/>
+	{% else %}
+		Aucune annonce trouvée
+	{% endfor %}
+
+	<a href="{{ path('advert_new') }}">Créez une nouvelle annonce</a>
+{% endblock %}

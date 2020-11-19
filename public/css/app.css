@@ -1,0 +1,11 @@
+.container{
+    width: 900px;
+    margin: auto;
+}
+
+/* CSS ADVERTS */
+
+.price{
+    color: red;
+    font-weight: bold;
+}
